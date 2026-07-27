@@ -1,0 +1,554 @@
+--------------------------------------------------------------------------------
+Profile data file 'callgrind_baseline.out' (creator: callgrind-3.24.0)
+--------------------------------------------------------------------------------
+I1 cache:
+D1 cache:
+LL cache:
+Timerange: Basic block 0 - 23525
+Trigger: Program termination
+Profiled target:  ./rsa (PID 554, part 1)
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Thresholds:       99
+Include dirs:
+User annotated:
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir
+--------------------------------------------------------------------------------
+166,065 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir               file:function
+--------------------------------------------------------------------------------
+34,351 (20.69%)  mmm.c:mmm [/home/student/rsa/rsa]
+24,053 (14.48%)  ./elf/dl-lookup.c:do_lookup_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+13,289 ( 8.00%)  ???:__udivsi3 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+ 9,718 ( 5.85%)  ./elf/dl-lookup.c:_dl_lookup_symbol_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 9,197 ( 5.54%)  ./string/../sysdeps/arm/armv7/strcmp.S:strcmp [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 8,166 ( 4.92%)  ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+ 7,235 ( 4.36%)  ./elf/../sysdeps/arm/dl-machine.h:_dl_relocate_object_no_relro
+ 5,772 ( 3.48%)  ./elf/do-rel.h:_dl_relocate_object_no_relro
+ 4,683 ( 2.82%)  ./elf/dl-reloc.c:_dl_relocate_object_no_relro [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 4,559 ( 2.75%)  ./elf/dl-lookup.c:check_match [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 3,888 ( 2.34%)  ./elf/dl-tunables.c:__GI___tunables_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 2,600 ( 1.57%)  ./elf/dl-version.c:_dl_check_map_versions [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+ 2,340 ( 1.41%)  ./elf/dl-tunables.h:__GI___tunables_init
+ 1,850 ( 1.11%)  ./string/../sysdeps/arm/memset.S:memset [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+ 1,343 ( 0.81%)  ./libio/fileops.c:_IO_file_overflow@@GLIBC_2.4 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   918 ( 0.55%)  ./elf/dl-load.c:_dl_map_object_from_fd [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   896 ( 0.54%)  ???:__aeabi_uidivmod [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   894 ( 0.54%)  ./elf/../sysdeps/generic/dl-protected.h:do_lookup_x
+   855 ( 0.51%)  ./elf/dl-deps.c:_dl_catch_exception
+   740 ( 0.45%)  ./stdio-common/vfprintf-internal.c:__printf_buffer [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   726 ( 0.44%)  ./elf/dl-cache.c:_dl_cache_libcmp [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   689 ( 0.41%)  ./malloc/malloc.c:ptmalloc_init.part.0
+   686 ( 0.41%)  ./string/../sysdeps/arm/armv6t2/strlen.S:strlen [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   666 ( 0.40%)  ./stdio-common/vfprintf-process-arg.c:__printf_buffer
+   647 ( 0.39%)  ./elf/dl-minimal-malloc.c:__minimal_malloc [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   635 ( 0.38%)  ./elf/../sysdeps/generic/ldsodefs.h:do_lookup_x
+   634 ( 0.38%)  ./string/../sysdeps/arm/armv6/strchr.S:index [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   608 ( 0.37%)  ./elf/dl-tunables.c:__tunable_get_val [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   599 ( 0.36%)  ./libio/genops.c:_IO_default_xsputn [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   594 ( 0.36%)  ./stdio-common/_itoa.c:_itoa [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   579 ( 0.35%)  ./elf/rtld.c:dl_main [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   575 ( 0.35%)  ./elf/dl-object.c:_dl_new_object [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   555 ( 0.33%)  mmm.c:mme [/home/student/rsa/rsa]
+   544 ( 0.33%)  ./string/../sysdeps/arm/armv7/multiarch/memcpy_impl.S:memcpy [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   539 ( 0.32%)  ./elf/get-dynamic-info.h:_dl_map_object_from_fd
+   467 ( 0.28%)  ./elf/dl-runtime.c:_dl_fixup [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   420 ( 0.25%)  ./elf/../sysdeps/generic/ldsodefs.h:_dl_relocate_object_no_relro
+   413 ( 0.25%)  ???:__udivmoddi4 [/home/student/rsa/rsa]
+   388 ( 0.23%)  ./elf/dl-load.c:_dl_map_object [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   376 ( 0.23%)  ./io/../sysdeps/unix/sysv/linux/fstatat64.c:__fstatat64_time64 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   368 ( 0.22%)  ./stdio-common/Xprintf_buffer_write.c:__printf_buffer_write [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   357 ( 0.21%)  ./string/memcmp.c:bcmp [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   350 ( 0.21%)  ./string/../sysdeps/arm/armv7/multiarch/memcpy_impl.S:__memcpy_neon [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   335 ( 0.20%)  ./elf/dl-find_object.c:_dlfo_sort_mappings [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   312 ( 0.19%)  ./elf/rtld.c:_dl_map_object_deps
+   307 ( 0.18%)  ./elf/dl-load.c:_dl_init_paths [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   300 ( 0.18%)  ./elf/./dl-map-segments.h:_dl_map_object_from_fd
+   290 ( 0.17%)  ./elf/dl-find_object.c:_dl_find_object_from_map
+   287 ( 0.17%)  ./elf/./get-dynamic-info.h:_dl_handle_execstack_tunable
+   279 ( 0.17%)  ./elf/dl-sort-maps.c:_dl_sort_maps [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   274 ( 0.16%)  ./libio/fileops.c:_IO_file_xsputn@@GLIBC_2.4 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   266 ( 0.16%)  ./elf/../sysdeps/unix/sysv/linux/dl-parse_auxv.h:_dl_sysdep_start
+   260 ( 0.16%)  ./elf/dl-misc.c:_dl_name_match_p [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   247 ( 0.15%)  ./elf/./get-dynamic-info.h:_dl_start
+   242 ( 0.15%)  ./elf/dl-fini.c:_dl_fini [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   237 ( 0.14%)  ./elf/rtld.c:_dl_handle_execstack_tunable
+   230 ( 0.14%)  ./elf/dl-minimal.c:strsep [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   228 ( 0.14%)  ./libio/genops.c:_IO_cleanup [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   223 ( 0.13%)  ./malloc/malloc.c:_int_malloc [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   218 ( 0.13%)  ./elf/dl-cache.c:search_cache [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   217 ( 0.13%)  ./elf/dl-sort-maps.c:dfs_traversal.part.0 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   217 ( 0.13%)  mmm.c:compute_R2 [/home/student/rsa/rsa]
+   212 ( 0.13%)  ./stdio-common/vfprintf-internal.c:__vfprintf_internal [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   206 ( 0.12%)  ./string/strcspn.c:strcspn [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   195 ( 0.12%)  ./libio/fileops.c:new_do_write [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   191 ( 0.12%)  ./libio/genops.c:_IO_flush_all [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   178 ( 0.11%)  ./elf/dl-init.c:call_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   174 ( 0.10%)  mmm.c:bit_length [/home/student/rsa/rsa]
+   168 ( 0.10%)  ./stdlib/exit.c:__run_exit_handlers [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   167 ( 0.10%)  ./elf/dl-load.c:__GI___close_nocancel
+   154 ( 0.09%)  ./elf/dl-environ.c:_dl_next_ld_env_entry [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   153 ( 0.09%)  ./elf/dl-load.c:open_path [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   148 ( 0.09%)  ./string/strchrnul.c:strchrnul [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   144 ( 0.09%)  ./stdlib/cxa_finalize.c:__cxa_finalize [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   144 ( 0.09%)  ???:0x00000b29 [/home/student/rsa/rsa]
+   141 ( 0.08%)  ./elf/./dl-find_object.h:_dl_find_object_from_map [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   141 ( 0.08%)  ./elf/dl-find_object.c:_dlfo_process_initial_noncontiguous_map [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   140 ( 0.08%)  ./elf/dl-minimal.c:lookup_malloc_symbol [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   140 ( 0.08%)  ./malloc/arena.c:ptmalloc_init.part.0 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   135 ( 0.08%)  ./elf/dl-lookup-direct.c:check_match [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   134 ( 0.08%)  ./elf/dl-load.c:__read_nocancel
+   132 ( 0.08%)  ./elf/dl-load.c:fillin_rpath.isra.0 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   132 ( 0.08%)  ./stdio-common/printf.c:printf [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   131 ( 0.08%)  ./elf/dl-object.c:_dl_add_to_namespace_list [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   130 ( 0.08%)  ./libio/libioP.h:_IO_default_xsputn
+   129 ( 0.08%)  ./elf/../sysdeps/arm/dl-machine.h:_dl_start
+   129 ( 0.08%)  ./elf/dl-load.c:open_verify.constprop.0 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   125 ( 0.08%)  ./libio/fileops.c:_IO_file_write@@GLIBC_2.4 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   122 ( 0.07%)  ./elf/dl-deps.c:_dl_map_object_deps [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   119 ( 0.07%)  ./elf/dl-find_object.c:_dl_find_object_from_map'2
+   119 ( 0.07%)  ./malloc/malloc.c:__glibc_morecore
+   118 ( 0.07%)  ./string/../sysdeps/arm/armv6t2/string-fza.h:strchrnul
+   113 ( 0.07%)  ./elf/dl-tls.c:_dl_allocate_tls_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   112 ( 0.07%)  ./elf/../sysdeps/unix/sysv/linux/arm/libc-do-syscall.S:__libc_do_syscall [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   108 ( 0.07%)  ./misc/../sysdeps/unix/sysv/linux/mmap.c:mmap [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   108 ( 0.07%)  ./stdio-common/printf_buffer_to_file.c:__printf_buffer_flush_to_file [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   107 ( 0.06%)  ./elf/../sysdeps/unix/sysv/linux/dl-sysdep.c:_dl_sysdep_start [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   106 ( 0.06%)  ./elf/do-rel.h:_dl_start
+   105 ( 0.06%)  ./elf/dl-lookup-direct.c:_dl_lookup_direct [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   103 ( 0.06%)  ./elf/dl-tls.c:_dl_determine_tlsoffset [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   100 ( 0.06%)  ./io/../include/sys/sysmacros.h:__fstatat64_time64
+    96 ( 0.06%)  ./elf/dl-minimal-malloc.c:__minimal_calloc [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    96 ( 0.06%)  ./elf/dl-setup_hash.c:_dl_setup_hash [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    90 ( 0.05%)  ./nptl/cancellation.c:__internal_syscall_cancel [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    89 ( 0.05%)  ./io/../sysdeps/unix/sysv/linux/open64_nocancel.c:__open64_nocancel [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    88 ( 0.05%)  ./elf/dl-reloc.c:_dl_protect_relro [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    86 ( 0.05%)  ./elf/rtld.c:_dl_start [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    81 ( 0.05%)  ./elf/dl-hwcaps.c:_dl_important_hwcaps [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    80 ( 0.05%)  ./elf/dl-call_fini.c:_dl_call_fini [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    80 ( 0.05%)  ./setjmp/../sysdeps/arm/setjmp.S:__sigsetjmp [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    80 ( 0.05%)  ./stdio-common/Xprintf_buffer_done.c:__printf_buffer_done [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    79 ( 0.05%)  ./string/../sysdeps/arm/armv6/strrchr.S:rindex [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    73 ( 0.04%)  ./malloc/malloc.c:sysmalloc [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    72 ( 0.04%)  ./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_switch [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    70 ( 0.04%)  ./csu/libc-start.c:__libc_start_main@@GLIBC_2.34 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    66 ( 0.04%)  ./elf/../sysdeps/generic/ldsodefs.h:_dl_new_object
+    66 ( 0.04%)  ./elf/dl-catch.c:_dl_catch_exception [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    65 ( 0.04%)  ./nptl/cancellation.c:__syscall_cancel [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    64 ( 0.04%)  ./posix/register-atfork.c:__unregister_atfork [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    61 ( 0.04%)  ./elf/../sysdeps/nptl/dl-mutex.c:__rtld_mutex_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    60 ( 0.04%)  ./stdlib/cxa_atexit.c:__internal_atexit [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    60 ( 0.04%)  ???:0x0488ef90 [???]
+    57 ( 0.03%)  ./elf/dl-cache.c:_dl_sysdep_read_whole_file
+    57 ( 0.03%)  ./libio/ioputs.c:puts [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    56 ( 0.03%)  ./elf/../sysdeps/posix/dl-fileid.h:_dl_map_object_from_fd
+    56 ( 0.03%)  ./elf/./dl-find_object.h:_dl_find_object_from_map'2 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    54 ( 0.03%)  ./elf/dl-hwcaps_split.c:_dl_hwcaps_split [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    54 ( 0.03%)  ./elf/dl-init.c:_dl_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    54 ( 0.03%)  ./elf/rtld.c:handle_preload_list [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    54 ( 0.03%)  main.c:main [/home/student/rsa/rsa]
+    53 ( 0.03%)  ./elf/dl-version.c:_dl_check_all_versions [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    51 ( 0.03%)  ./termios/../sysdeps/unix/sysv/linux/tcgetattr.c:tcgetattr [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    48 ( 0.03%)  ./stdio-common/../string/bits/string_fortified.h:__printf_buffer_write
+    46 ( 0.03%)  ./elf/dl-find_object.c:_dlfo_process_initial_noncontiguous_map'2 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    46 ( 0.03%)  ./elf/dl-load.c:_dl_notify_new_object [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    45 ( 0.03%)  ./elf/../sysdeps/arm/dl-trampoline.S:_dl_runtime_resolve [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    45 ( 0.03%)  ./io/../sysdeps/unix/sysv/linux/write.c:write [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    45 ( 0.03%)  ./nptl/pthread_mutex_unlock.c:__pthread_mutex_unlock_usercnt [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    44 ( 0.03%)  ./csu/../sysdeps/unix/sysv/linux/arm/libc-do-syscall.S:__libc_do_syscall [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    44 ( 0.03%)  ./nptl/pthread_mutex_conf.c:__pthread_tunables_init [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    44 ( 0.03%)  ./stdio-common/printf-parse.h:__printf_buffer
+    43 ( 0.03%)  ./elf/dl-catch.c:_dl_catch_exception'2 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    42 ( 0.03%)  ./misc/../sysdeps/unix/syscall-template.S:mprotect [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    40 ( 0.02%)  ./elf/../include/rtld-malloc.h:__minimal_calloc
+    40 ( 0.02%)  ./elf/dl-minimal.c:__rtld_malloc_init_real [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    40 ( 0.02%)  ./libio/fileops.c:_IO_do_write@@GLIBC_2.4 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    40 ( 0.02%)  ./nptl/pthread_mutex_lock.c:pthread_mutex_lock@@GLIBC_2.4 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    39 ( 0.02%)  ./elf/../sysdeps/nptl/dl-tls_init_tp.c:__tls_init_tp
+    39 ( 0.02%)  ./elf/dl-audit.c:_dl_audit_activity_nsid [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    36 ( 0.02%)  ./elf/dl-debug.c:_dl_debug_initialize [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    36 ( 0.02%)  ./elf/rtld.c:access
+    36 ( 0.02%)  ./libio/fileops.c:_IO_doallocbuf
+    35 ( 0.02%)  ./csu/../sysdeps/nptl/libc_start_call_main.h:(below main) [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    35 ( 0.02%)  ./elf/dl-deps.c:openaux [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    35 ( 0.02%)  ./elf/dl-reloc.c:_dl_relocate_object [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    35 ( 0.02%)  ./elf/dl-tls.c:_dl_tls_static_surplus_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    35 ( 0.02%)  ./elf/rtld.c:_dl_find_object_init
+    35 ( 0.02%)  ./libio/filedoalloc.c:_IO_file_doallocate [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    35 ( 0.02%)  ./malloc/malloc.c:tcache_init.part.0 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    35 ( 0.02%)  ./misc/../sysdeps/unix/syscall-template.S:munmap [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    35 ( 0.02%)  main.c:main'2 [/home/student/rsa/rsa]
+    34 ( 0.02%)  ./elf/../sysdeps/unix/sysv/linux/dl-extra_tls.h:_dl_determine_tlsoffset
+    34 ( 0.02%)  ./libio/genops.c:_IO_default_setbuf [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    33 ( 0.02%)  ./elf/../sysdeps/generic/dl-hash.h:__rtld_malloc_init_real
+    33 ( 0.02%)  ./elf/dl-debug.c:_dl_debug_post_relocate [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    33 ( 0.02%)  ./libio/libioP.h:_IO_file_xsputn@@GLIBC_2.4
+    32 ( 0.02%)  ./stdio-common/printf_buffer_to_file.c:__printf_buffer_to_file_done [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    32 ( 0.02%)  ./stdlib/cxa_atexit.c:__new_exitfn [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    32 ( 0.02%)  rsa.c:rsa_init [/home/student/rsa/rsa]
+    31 ( 0.02%)  ./elf/../sysdeps/unix/sysv/linux/rseq-internal.h:__tls_init_tp
+    30 ( 0.02%)  ./elf/dl-debug.c:_dl_debug_update [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    30 ( 0.02%)  ./elf/dl-hwcaps_split.c:_dl_hwcaps_split_masked [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    30 ( 0.02%)  ./elf/dl-tls.c:_dl_add_to_slotinfo [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    30 ( 0.02%)  ./malloc/scratch_buffer_set_array_size.c:__libc_scratch_buffer_set_array_size [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    30 ( 0.02%)  ./misc/sbrk.c:sbrk [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    30 ( 0.02%)  ./string/../sysdeps/generic/string-misc.h:strchrnul
+    29 ( 0.02%)  ./csu/init-first.c:_init_first [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    29 ( 0.02%)  ./elf/./dl-load.h:_dl_map_object_from_fd
+    29 ( 0.02%)  ./elf/dl-call-libc-early-init.c:_dl_call_libc_early_init [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    28 ( 0.02%)  ./elf/./dl-hwcaps.h:_dl_important_hwcaps
+    28 ( 0.02%)  ./elf/dl-hwcaps.c:copy_hwcaps [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    28 ( 0.02%)  ./elf/dl-load.c:_dl_dst_count [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    28 ( 0.02%)  ./io/../sysdeps/unix/sysv/linux/fstat64.c:__fstat64_time64 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    28 ( 0.02%)  ./stdio-common/../include/printf_buffer.h:__printf_buffer_to_file_init [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    27 ( 0.02%)  ./elf/dl-tls.c:_dl_allocate_tls_storage [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    27 ( 0.02%)  ./elf/rtld.c:do_preload [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    27 ( 0.02%)  ./string/strdup.c:strdup [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    27 ( 0.02%)  rsa.c:rsa_decrypt [/home/student/rsa/rsa]
+    27 ( 0.02%)  rsa.c:rsa_encrypt [/home/student/rsa/rsa]
+    26 ( 0.02%)  ./elf/../sysdeps/nptl/pthread_early_init.h:getrlimit
+    26 ( 0.02%)  ./elf/dl-misc.c:_dl_sysdep_read_whole_file [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    25 ( 0.02%)  ./elf/../include/rtld-malloc.h:_dl_new_object
+    25 ( 0.02%)  ./elf/dl-catch.c:_dl_receive_error [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    25 ( 0.02%)  ./elf/dl-tls.c:_dl_tls_initial_modid_limit_setup [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: rsa.c
+--------------------------------------------------------------------------------
+Ir
+
+ .           #include "rsa.h"
+ .
+ .           void rsa_init(rsa_key_t *key, uint64_t E, uint64_t D, uint64_t PQ)
+ 5 ( 0.00%)  {
+ 3 ( 0.00%)      key->E = E;
+ 3 ( 0.00%)      key->D = D;
+ 3 ( 0.00%)      key->PQ = PQ;
+ 5 ( 0.00%)      key->m = bit_length(PQ);
+174 ( 0.10%)  => /home/student/rsa/mmm.c:bit_length (1x)
+ 9 ( 0.01%)      key->R2 = compute_R2(PQ, key->m);
+728 ( 0.44%)  => /home/student/rsa/mmm.c:compute_R2 (1x)
+ 4 ( 0.00%)  }
+ .
+ .           uint64_t rsa_encrypt(const rsa_key_t *key, uint64_t P)
+ 5 ( 0.00%)  {
+17 ( 0.01%)      return mme(P, key->E, key->PQ, key->m, key->R2);
+11,711 ( 7.05%)  => /home/student/rsa/mmm.c:mme (1x)
+ 5 ( 0.00%)  }
+26,322 (15.85%)  => /home/student/rsa/main.c:main'2 (1x)
+ .
+ .           uint64_t rsa_decrypt(const rsa_key_t *key, uint64_t C)
+ 5 ( 0.00%)  {
+17 ( 0.01%)      return mme(C, key->D, key->PQ, key->m, key->R2);
+23,241 (14.00%)  => /home/student/rsa/mmm.c:mme (1x)
+ 5 ( 0.00%)  }
+--------------------------------------------------------------------------------
+-- Auto-annotated source: mmm.c
+--------------------------------------------------------------------------------
+Ir
+
+    .           #include "mmm.h"
+    .
+    .           // typedef unsigned __int128 uint128_t;
+    .
+    .           // computes bit length of M
+    .           int bit_length(uint64_t M)
+    4 ( 0.00%)  {
+    2 ( 0.00%)      int m = 0;
+    2 ( 0.00%)      uint64_t MM = M;
+   40 ( 0.02%)      while (MM)
+    .               {
+   36 ( 0.02%)          m++;
+   84 ( 0.05%)          MM >>= 1;
+    .               }
+    1 ( 0.00%)      return m;
+    5 ( 0.00%)  }
+    .
+    .           uint64_t compute_R2(uint64_t M, int m)
+    5 ( 0.00%)  {
+    .               // R = 2^m mod M
+    .
+    5 ( 0.00%)      uint64_t R = 1 % M;
+   23 ( 0.01%)  => ???:0x00000b29 (1x)
+   91 ( 0.05%)      for (int i = 0; i < m; i++)
+    .               {
+   96 ( 0.06%)          R = (R * 2) % M;
+  338 ( 0.20%)  => ???:0x00000b29 (12x)
+    .               }
+    .
+    .               // R^2 mod M
+   15 ( 0.01%)      return (R * R) % (M);
+  150 ( 0.09%)  => ???:0x00000b29 (1x)
+    5 ( 0.00%)  }
+    .
+    .           /* Montgomery Multiplication: returns (X * Y * R^-1) mod M
+    .            * where R = 2^m.  m is number of bits in modulus M.
+    .            * This function assumes M is odd and > 0.
+    .            */
+    .
+    .           /*
+    .           NEW to make work on VM for baseline profiling (uint128 not on 32bit):
+    .           representing T as 2 64 bit halves (T_hi and T_lo) to hold 128 bits
+    .
+    .           */
+    .
+    .           uint64_t mmm(uint64_t X, uint64_t Y, uint64_t M, int m)
+  150 ( 0.09%)  {
+    .
+   90 ( 0.05%)      uint64_t T_hi = 0;
+   90 ( 0.05%)      uint64_t T_lo = 0;
+  120 ( 0.07%)      const uint64_t Y0 = Y & 1ULL;
+    .
+2,730 ( 1.64%)      for (int i = 0; i < m; i++)
+    .               {
+5,760 ( 3.47%)          const uint64_t Xi = (X >> i) & 1ULL;
+    .                   // Least significant bit of T
+2,160 ( 1.30%)          const uint64_t T0 = T_lo & 1ULL;
+    .                   // eta = T0 XOR (Xi AND Y0)
+3,960 ( 2.38%)          const uint64_t eta = T0 ^ (Xi & Y0);
+    .
+    .                   // Conditionally add Y and M
+1,080 ( 0.65%)          if (Xi)
+    .                   {
+  330 ( 0.20%)              uint64_t old_lo = T_lo;
+1,320 ( 0.79%)              T_lo += Y;
+  825 ( 0.50%)              if (T_lo < old_lo)
+    .                       { // unsigned overflow -> carry out
+    .                           T_hi += 1;
+    .                       }
+    .                   }
+1,080 ( 0.65%)          if (eta)
+    .                   {
+  330 ( 0.20%)              uint64_t old_lo = T_lo;
+1,320 ( 0.79%)              T_lo += M;
+  825 ( 0.50%)              if (T_lo < old_lo)
+    .                       {
+    .                           T_hi += 1;
+    .                       }
+    .                   }
+    .
+    .                   // Shift pair right by 1
+6,120 ( 3.69%)          T_lo = (T_lo >> 1) | (T_hi << 63);
+2,520 ( 1.52%)          T_hi = T_hi >> 1;
+    .
+    .                   // Conditionally subtract M to keep T in [0, M-1]
+2,880 ( 1.73%)          if (T_hi != 0 || T_lo >= M)
+    .                   {
+  328 ( 0.20%)              T_lo -= M;
+  123 ( 0.07%)              T_hi = 0;
+    .                   }
+    .               }
+    .
+   30 ( 0.02%)      return T_lo;
+  180 ( 0.11%)  }
+    .
+    .           // computes X^E mod M with square and multiple, using mmm() for each multiply
+    .           uint64_t mme(uint64_t X, uint64_t E, uint64_t M, int m, uint64_t R2)
+   10 ( 0.01%)  {
+    .
+    .               // Handle modulus 1: everything mod 1 is 0.
+    8 ( 0.00%)      if (M == 1)
+    .               {
+    .                   return 0;
+    .               }
+    .               // x^0 = 1
+    6 ( 0.00%)      if (E == 0)
+    .               {
+    .                   return 1 % M;
+    .               }
+    .
+    .               // bring base into Montgomery domain
+   24 ( 0.01%)      uint64_t X_m = mmm(X % M, R2, M, m);
+2,196 ( 1.32%)  => mmm.c:mmm (2x)
+   46 ( 0.03%)  => ???:0x00000b29 (2x)
+    .
+    .               // initialize Z as 1 in Montgomery domain
+   18 ( 0.01%)      uint64_t Z_m = mmm(1, R2, M, m);
+2,080 ( 1.25%)  => mmm.c:mmm (2x)
+    .
+    .               // process bits of E from least -> most significant bit
+    4 ( 0.00%)      uint64_t e = E;
+   59 ( 0.04%)      while (e != 0)
+    .               {
+   85 ( 0.05%)          if (e & 1ULL)
+    .                   {
+   56 ( 0.03%)              Z_m = mmm(Z_m, X_m, M, m); // multiply
+8,024 ( 4.83%)  => mmm.c:mmm (7x)
+    .                   }
+  136 ( 0.08%)          X_m = mmm(X_m, X_m, M, m); // square
+19,776 (11.91%)  => mmm.c:mmm (17x)
+  119 ( 0.07%)          e >>= 1ULL;
+    .               }
+    .
+    .               // convert out of Montgomery
+   18 ( 0.01%)      uint64_t Z = mmm(Z_m, 1, M, m);
+2,275 ( 1.37%)  => mmm.c:mmm (2x)
+    2 ( 0.00%)      return Z;
+   10 ( 0.01%)  }
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: main.c
+--------------------------------------------------------------------------------
+Ir
+
+ .           #include <stdio.h>
+ .           #include <stdint.h>
+ .           #include "mmm.h"
+ .           #include "rsa.h"
+ .           // #include "lookup_table.h"
+ .
+ .           // compile with gcc -Wall -o rsa mmm.c rsa.c main.c
+ .           int main(void)
+ 3 ( 0.00%)  {
+ .               /* pleaceholder key values */
+ 3 ( 0.00%)      const uint64_t E = 17;
+ 3 ( 0.00%)      const uint64_t D = 2753;
+ 3 ( 0.00%)      const uint64_t PQ = 3233;
+ 3 ( 0.00%)      const uint64_t P = 65; /* plaintext to test */
+ .
+ .               rsa_key_t key;
+ 8 ( 0.00%)      rsa_init(&key, E, D, PQ);
+934 ( 0.56%)  => /home/student/rsa/rsa.c:rsa_init (1x)
+ .
+31 ( 0.02%)      printf("RSA with Montgomery Modular Multiplication\n");
+38,060 (22.92%)  => /home/student/rsa/rsa.c:rsa_encrypt (1x)
+4,612 ( 2.78%)  => ./libio/ioputs.c:puts (1x)
+1,795 ( 1.08%)  => ./stdio-common/printf.c:printf (1x)
+1,548 ( 0.93%)  => ./elf/../sysdeps/arm/dl-trampoline.S:_dl_runtime_resolve (2x)
+ .               printf("Keys: E=%llu, D=%llu, PQ=%llu\n\n", (unsigned long long)E, (unsigned long long)D, (unsigned long long)PQ);
+ .
+ .               /* encrypt then decrypt */
+ 1 ( 0.00%)      uint64_t C = rsa_encrypt(&key, P);
+ 5 ( 0.00%)      uint64_t P_back = rsa_decrypt(&key, C);
+23,268 (14.01%)  => /home/student/rsa/rsa.c:rsa_decrypt (1x)
+ .
+29 ( 0.02%)      printf("Plaintext:       P = %llu\n", (unsigned long long)P);
+3,019 ( 1.82%)  => ./stdio-common/printf.c:printf (3x)
+ .               printf("Ciphertext:      C = P^E mod PQ = %llu\n", (unsigned long long)C);
+ .               printf("Decrypted back:  P' = C^D mod PQ = %llu\n\n", (unsigned long long)P_back);
+ .
+ .               // for testing lookup table method
+ .               // uint64_t C_table = table_modexp(P, E, PQ);
+ .               // printf("RSA with Lookup Table\n");
+ .               // printf("Keys: E=%llu, D=%llu, PQ=%llu\n\n", (unsigned long long)E, (unsigned long long)D, (unsigned long long)PQ);
+ .               // printf("Plaintext:       P = %llu\n", (unsigned long long)P);
+-- line 34 ----------------------------------------
+
+--------------------------------------------------------------------------------
+The following files chosen for auto-annotation could not be found:
+--------------------------------------------------------------------------------
+  ./csu/../sysdeps/nptl/libc_start_call_main.h
+  ./csu/../sysdeps/unix/sysv/linux/arm/libc-do-syscall.S
+  ./csu/init-first.c
+  ./csu/libc-start.c
+  ./elf/../include/rtld-malloc.h
+  ./elf/../sysdeps/arm/dl-machine.h
+  ./elf/../sysdeps/arm/dl-trampoline.S
+  ./elf/../sysdeps/generic/dl-hash.h
+  ./elf/../sysdeps/generic/dl-new-hash.h
+  ./elf/../sysdeps/generic/dl-protected.h
+  ./elf/../sysdeps/generic/ldsodefs.h
+  ./elf/../sysdeps/nptl/dl-mutex.c
+  ./elf/../sysdeps/nptl/dl-tls_init_tp.c
+  ./elf/../sysdeps/nptl/pthread_early_init.h
+  ./elf/../sysdeps/posix/dl-fileid.h
+  ./elf/../sysdeps/unix/sysv/linux/arm/libc-do-syscall.S
+  ./elf/../sysdeps/unix/sysv/linux/dl-extra_tls.h
+  ./elf/../sysdeps/unix/sysv/linux/dl-parse_auxv.h
+  ./elf/../sysdeps/unix/sysv/linux/dl-sysdep.c
+  ./elf/../sysdeps/unix/sysv/linux/rseq-internal.h
+  ./elf/./dl-find_object.h
+  ./elf/./dl-hwcaps.h
+  ./elf/./dl-load.h
+  ./elf/./dl-map-segments.h
+  ./elf/./get-dynamic-info.h
+  ./elf/dl-audit.c
+  ./elf/dl-cache.c
+  ./elf/dl-call-libc-early-init.c
+  ./elf/dl-call_fini.c
+  ./elf/dl-catch.c
+  ./elf/dl-debug.c
+  ./elf/dl-deps.c
+  ./elf/dl-environ.c
+  ./elf/dl-find_object.c
+  ./elf/dl-fini.c
+  ./elf/dl-hwcaps.c
+  ./elf/dl-hwcaps_split.c
+  ./elf/dl-init.c
+  ./elf/dl-load.c
+  ./elf/dl-lookup-direct.c
+  ./elf/dl-lookup.c
+  ./elf/dl-minimal-malloc.c
+  ./elf/dl-minimal.c
+  ./elf/dl-misc.c
+  ./elf/dl-object.c
+  ./elf/dl-reloc.c
+  ./elf/dl-runtime.c
+  ./elf/dl-setup_hash.c
+  ./elf/dl-sort-maps.c
+  ./elf/dl-tls.c
+  ./elf/dl-tunables.c
+  ./elf/dl-tunables.h
+  ./elf/dl-version.c
+  ./elf/do-rel.h
+  ./elf/get-dynamic-info.h
+  ./elf/rtld.c
+  ./io/../include/sys/sysmacros.h
+  ./io/../sysdeps/unix/sysv/linux/fstat64.c
+  ./io/../sysdeps/unix/sysv/linux/fstatat64.c
+  ./io/../sysdeps/unix/sysv/linux/open64_nocancel.c
+  ./io/../sysdeps/unix/sysv/linux/write.c
+  ./libio/filedoalloc.c
+  ./libio/fileops.c
+  ./libio/genops.c
+  ./libio/ioputs.c
+  ./libio/libioP.h
+  ./malloc/arena.c
+  ./malloc/malloc.c
+  ./malloc/scratch_buffer_set_array_size.c
+  ./misc/../sysdeps/unix/syscall-template.S
+  ./misc/../sysdeps/unix/sysv/linux/mmap.c
+  ./misc/sbrk.c
+  ./nptl/cancellation.c
+  ./nptl/pthread_mutex_conf.c
+  ./nptl/pthread_mutex_lock.c
+  ./nptl/pthread_mutex_unlock.c
+  ./posix/register-atfork.c
+  ./setjmp/../sysdeps/arm/setjmp.S
+  ./stdio-common/../include/printf_buffer.h
+  ./stdio-common/../string/bits/string_fortified.h
+  ./stdio-common/Xprintf_buffer_done.c
+  ./stdio-common/Xprintf_buffer_write.c
+  ./stdio-common/_itoa.c
+  ./stdio-common/printf-parse.h
+  ./stdio-common/printf.c
+  ./stdio-common/printf_buffer_to_file.c
+  ./stdio-common/vfprintf-internal.c
+  ./stdio-common/vfprintf-process-arg.c
+  ./stdlib/cxa_atexit.c
+  ./stdlib/cxa_finalize.c
+  ./stdlib/exit.c
+  ./string/../sysdeps/arm/armv6/strchr.S
+  ./string/../sysdeps/arm/armv6/strrchr.S
+  ./string/../sysdeps/arm/armv6t2/string-fza.h
+  ./string/../sysdeps/arm/armv6t2/strlen.S
+  ./string/../sysdeps/arm/armv7/multiarch/memcpy_impl.S
+  ./string/../sysdeps/arm/armv7/strcmp.S
+  ./string/../sysdeps/arm/memset.S
+  ./string/../sysdeps/generic/string-misc.h
+  ./string/memcmp.c
+  ./string/strchrnul.c
+  ./string/strcspn.c
+  ./string/strdup.c
+  ./termios/../sysdeps/unix/sysv/linux/tcgetattr.c
+
+--------------------------------------------------------------------------------
+Ir
+--------------------------------------------------------------------------------
+35,472 (21.36%)  events annotated

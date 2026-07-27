@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include "mmm.h"
 #include "rsa.h"
+// #include "lookup_table.h"
 
 // compile with gcc -Wall -o rsa mmm.c rsa.c main.c
 int main(void)
@@ -16,8 +17,7 @@ int main(void)
     rsa_init(&key, E, D, PQ);
 
     printf("RSA with Montgomery Modular Multiplication\n");
-    printf("Keys: E=%llu, D=%llu, PQ=%llu\n\n",
-           (unsigned long long)E, (unsigned long long)D, (unsigned long long)PQ);
+    printf("Keys: E=%llu, D=%llu, PQ=%llu\n\n", (unsigned long long)E, (unsigned long long)D, (unsigned long long)PQ);
 
     /* encrypt then decrypt */
     uint64_t C = rsa_encrypt(&key, P);
@@ -27,5 +27,12 @@ int main(void)
     printf("Ciphertext:      C = P^E mod PQ = %llu\n", (unsigned long long)C);
     printf("Decrypted back:  P' = C^D mod PQ = %llu\n\n", (unsigned long long)P_back);
 
+    // for testing lookup table method
+    // uint64_t C_table = table_modexp(P, E, PQ);
+    // printf("RSA with Lookup Table\n");
+    // printf("Keys: E=%llu, D=%llu, PQ=%llu\n\n", (unsigned long long)E, (unsigned long long)D, (unsigned long long)PQ);
+    // printf("Plaintext:       P = %llu\n", (unsigned long long)P);
+    // printf("Ciphertext:      C = P^E mod PQ = %llu\n", (unsigned long long)C_table);
+    // printf("Decrypted back:  P' = C^D mod PQ = %llu\n\n", (unsigned long long)P_back);
     return 0;
 }

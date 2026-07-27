@@ -1,6 +1,6 @@
 #include "mmm.h"
 
-typedef unsigned __int128 uint128_t;
+// typedef unsigned __int128 uint128_t;
 
 // computes bit length of M
 int bit_length(uint64_t M)
@@ -22,52 +22,72 @@ uint64_t compute_R2(uint64_t M, int m)
     uint64_t R = 1 % M;
     for (int i = 0; i < m; i++)
     {
-        R = (uint64_t)(((uint128_t)R * 2) % (uint128_t)M);
+        R = (R * 2) % M;
     }
 
     // R^2 mod M
-    return (uint64_t)(((uint128_t)R * (uint128_t)R) % (uint128_t)M);
+    return (R * R) % (M);
 }
 
 /* Montgomery Multiplication: returns (X * Y * R^-1) mod M
  * where R = 2^m.  m is number of bits in modulus M.
  * This function assumes M is odd and > 0.
  */
+
+/*
+NEW to make work on VM for baseline profiling (uint128 not on 32bit):
+representing T as 2 64 bit halves (T_hi and T_lo) to hold 128 bits
+
+*/
+
 uint64_t mmm(uint64_t X, uint64_t Y, uint64_t M, int m)
 {
 
-    uint128_t T = 0;
+    uint64_t T_hi = 0;
+    uint64_t T_lo = 0;
     const uint64_t Y0 = Y & 1ULL;
 
     for (int i = 0; i < m; i++)
     {
         const uint64_t Xi = (X >> i) & 1ULL;
         // Least significant bit of T
-        unsigned int T0 = (unsigned int)(T & 1ULL);
+        const uint64_t T0 = T_lo & 1ULL;
         // eta = T0 XOR (Xi AND Y0)
-        unsigned int eta = T0 ^ (Xi & Y0);
+        const uint64_t eta = T0 ^ (Xi & Y0);
 
         // Conditionally add Y and M
         if (Xi)
         {
-            T += (uint128_t)Y;
+            uint64_t old_lo = T_lo;
+            T_lo += Y;
+            if (T_lo < old_lo)
+            { // unsigned overflow -> carry out
+                T_hi += 1;
+            }
         }
         if (eta)
         {
-            T += (uint128_t)M;
+            uint64_t old_lo = T_lo;
+            T_lo += M;
+            if (T_lo < old_lo)
+            {
+                T_hi += 1;
+            }
         }
 
-        // Shift right by 1
-        T >>= 1;
+        // Shift pair right by 1
+        T_lo = (T_lo >> 1) | (T_hi << 63);
+        T_hi = T_hi >> 1;
 
         // Conditionally subtract M to keep T in [0, M-1]
-        if (T >= (uint128_t)M)
+        if (T_hi != 0 || T_lo >= M)
         {
-            T -= (uint128_t)M;
+            T_lo -= M;
+            T_hi = 0;
         }
     }
 
-    return (uint64_t)T;
+    return T_lo;
 }
 
 // computes X^E mod M with square and multiple, using mmm() for each multiply
@@ -104,6 +124,6 @@ uint64_t mme(uint64_t X, uint64_t E, uint64_t M, int m, uint64_t R2)
     }
 
     // convert out of Montgomery
-    int Z = mmm(Z_m, 1, M, m);
+    uint64_t Z = mmm(Z_m, 1, M, m);
     return Z;
 }
