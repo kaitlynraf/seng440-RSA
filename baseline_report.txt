@@ -1,3 +1,6 @@
+
+This was the report given by valgrind for our current main.c which does only 1 correctness check rather than any actual testing, next will be to add more of a proper test bench
+
 --------------------------------------------------------------------------------
 Profile data file 'callgrind_baseline.out' (creator: callgrind-3.24.0)
 --------------------------------------------------------------------------------
