@@ -6,6 +6,7 @@
 #include "rsa.h"
 #include "rsa_params.h"
 #include "lookup_table.h"
+#include "tests.h"
 
 /*
  * SENG440 RSA Cryptography — main.c
@@ -54,6 +55,11 @@ static void unpack_text(uint64_t v, char *out, size_t len) {
 }
 
 int main(void) {
+        if (run_tests() != 0) {
+        printf("\nSelf-test failed — aborting before interactive mode.\n");
+        return 1;
+    }
+    
     printf("=====================================================\n");
     printf("  SENG440 RSA Cryptography\n");
     printf("  64-bit wordlength | Montgomery MMM | ARM target\n");
