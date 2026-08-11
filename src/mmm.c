@@ -1,7 +1,5 @@
 #include "mmm.h"
 
-// typedef unsigned __int128 uint128_t;
-
 // computes bit length of M
 int bit_length(uint64_t M)
 {
@@ -18,6 +16,7 @@ int bit_length(uint64_t M)
 uint64_t compute_R2(uint64_t M, int m)
 {
     // R = 2^m mod M
+    typedef unsigned __int128 uint128_t;
 
     uint64_t R = 1 % M;
     for (int i = 0; i < m; i++)
@@ -25,8 +24,11 @@ uint64_t compute_R2(uint64_t M, int m)
         R = (R * 2) % M;
     }
 
-    // R^2 mod M
-    return (R * R) % (M);
+    // R^2 mod M — must be done in 128-bit arithmetic: R can be up to
+    // ~2^(m-1), so for wide moduli (e.g. the 63-bit default key) a
+    // plain 64-bit R*R silently overflows and wraps before the %M is
+    // ever applied, corrupting R2 and every MMM conversion after it.
+    return (uint64_t)(((uint128_t)R * (uint128_t)R) % (uint128_t)M);
 }
 
 /* Montgomery Multiplication: returns (X * Y * R^-1) mod M
