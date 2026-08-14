@@ -1,0 +1,38 @@
+Profile data file 'cg_mmmv2.out' (creator: callgrind-3.24.0)
+--------------------------------------------------------------------------------
+I1 cache:
+D1 cache:
+LL cache:
+Timerange: Basic block 0 - 588336
+Trigger: Program termination
+Profiled target:  ./vm_tests mmm (PID 627, part 1)
+Events recorded:  Ir Bc Bcm Bi Bim
+Events shown:     Ir Bc Bcm Bi Bim
+Event sort order: Ir Bc Bcm Bi Bim
+Thresholds:       99 0 0 0 0
+Include dirs:
+User annotated:
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir                 Bc               Bcm              Bi           Bim
+--------------------------------------------------------------------------------
+5,344,287 (100.0%) 671,142 (100.0%) 156,648 (100.0%) 608 (100.0%) 254 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir                 Bc               Bcm              Bi           Bim          file:function
+--------------------------------------------------------------------------------
+5,164,100 (96.63%) 648,460 (96.62%) 153,447 (97.96%)   .           .           mmm.c:mmm [/home/student/rsa-new/vm_tests]
+   42,940 ( 0.80%)   3,240 ( 0.48%)     680 ( 0.43%)   .           .           mmm.c:mme [/home/student/rsa-new/vm_tests]
+   24,273 ( 0.45%)   3,604 ( 0.54%)     250 ( 0.16%)   .           .           ./elf/dl-lookup.c:do_lookup_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   13,397 ( 0.25%)     444 ( 0.07%)      25 ( 0.02%) 101 (16.61%) 74 (29.13%)  ???:__udivsi3 [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    9,813 ( 0.18%)   1,125 ( 0.17%)      23 ( 0.01%)   .           .           ./elf/dl-lookup.c:_dl_lookup_symbol_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    9,463 ( 0.18%)   1,814 ( 0.27%)     295 ( 0.19%)   .           .           ./string/../sysdeps/arm/armv7/strcmp.S:strcmp [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    8,202 ( 0.15%)   1,610 ( 0.24%)     128 ( 0.08%)   .           .           ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+    7,246 ( 0.14%)     855 ( 0.13%)      20 ( 0.01%) 116 (19.08%) 20 ( 7.87%)  ./elf/../sysdeps/arm/dl-machine.h:_dl_relocate_object_no_relro
+    5,775 ( 0.11%)   1,390 ( 0.21%)      61 ( 0.04%)   .           .           ./elf/do-rel.h:_dl_relocate_object_no_relro
+    4,683 ( 0.09%)     584 ( 0.09%)      38 ( 0.02%)  93 (15.30%)  8 ( 3.15%)  ./elf/dl-reloc.c:_dl_relocate_object_no_relro [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    4,610 ( 0.09%)     718 ( 0.11%)      31 ( 0.02%)   .           .           ./elf/dl-lookup.c:check_match [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: mmm.c
