@@ -1,27 +1,39 @@
---------------------------------------------------------------------------------
-Profile data file 'cg_optv2.out' (creator: callgrind-3.24.0)
+Profile data file 'cg_opt_new.out' (creator: callgrind-3.24.0)
 --------------------------------------------------------------------------------
 I1 cache:
 D1 cache:
 LL cache:
-Timerange: Basic block 0 - 942506
+Timerange: Basic block 0 - 358476
 Trigger: Program termination
-Profiled target:  ./vm_tests opt (PID 594, part 1)
-Events recorded:  Ir
-Events shown:     Ir
-Event sort order: Ir
-Thresholds:       99
+Profiled target:  ./vm_tests opt (PID 632, part 1)
+Events recorded:  Ir Bc Bcm Bi Bim
+Events shown:     Ir Bc Bcm Bi Bim
+Event sort order: Ir Bc Bcm Bi Bim
+Thresholds:       99 0 0 0 0
 Include dirs:
 User annotated:
 Auto-annotation:  on
 
 --------------------------------------------------------------------------------
-Ir
+Ir                 Bc               Bcm             Bi           Bim
 --------------------------------------------------------------------------------
-23,374,208 (100.0%)  PROGRAM TOTALS
+5,382,127 (100.0%) 355,802 (100.0%) 27,786 (100.0%) 608 (100.0%) 254 (100.0%)  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
-Ir                   file:function
+Ir                 Bc               Bcm             Bi           Bim          file:function
 --------------------------------------------------------------------------------
-16,336,760 (69.89%)  ???:mmm_step [/home/student/rsa-new/vm_tests]
- 6,844,560 (29.28%)  ???:mmm_opt [/home/student/rsa-new/vm_tests]
+5,201,160 (96.64%) 332,880 (93.56%) 24,362 (87.68%)   .           .           mmm_opt.c:mmm_opt [/home/student/rsa-new/vm_tests]
+   42,940 ( 0.80%)   3,240 ( 0.91%)    892 ( 3.21%)   .           .           mmm_opt.c:mme_opt [/home/student/rsa-new/vm_tests]
+   24,273 ( 0.45%)   3,604 ( 1.01%)    250 ( 0.90%)   .           .           ./elf/dl-lookup.c:do_lookup_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+   13,397 ( 0.25%)     444 ( 0.12%)     23 ( 0.08%) 101 (16.61%) 74 (29.13%)  ???:__udivsi3 [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+   10,243 ( 0.19%)   2,054 ( 0.58%)    307 ( 1.10%)   .           .           ./string/../sysdeps/arm/armv7/strcmp.S:strcmp [/usr/lib/arm-linux-gnueabihf/libc.so.6]
+    9,813 ( 0.18%)   1,125 ( 0.32%)     23 ( 0.08%)   .           .           ./elf/dl-lookup.c:_dl_lookup_symbol_x [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    8,202 ( 0.15%)   1,610 ( 0.45%)    128 ( 0.46%)   .           .           ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+    7,246 ( 0.13%)     855 ( 0.24%)     20 ( 0.07%) 116 (19.08%) 20 ( 7.87%)  ./elf/../sysdeps/arm/dl-machine.h:_dl_relocate_object_no_relro
+    5,775 ( 0.11%)   1,390 ( 0.39%)     61 ( 0.22%)   .           .           ./elf/do-rel.h:_dl_relocate_object_no_relro
+    4,683 ( 0.09%)     584 ( 0.16%)     38 ( 0.14%)  93 (15.30%)  8 ( 3.15%)  ./elf/dl-reloc.c:_dl_relocate_object_no_relro [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+    4,610 ( 0.09%)     718 ( 0.20%)     31 ( 0.11%)   .           .           ./elf/dl-lookup.c:check_match [/usr/lib/arm-linux-gnueabihf/ld-linux-armhf.so.3]
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: mmm_opt.c
+--------------------------------------------------------------------------------
