@@ -1,5 +1,41 @@
 #include "mmm_opt.h"
 
+/* One step of the MMM inner loop, used by the 4x-unrolled body.
+ * static inline so the compiler inlines all four copies into the unrolled block
+ * no call overhead, and the scheduler sees all four steps together. */
+static inline void mmm_step(
+        uint64_t Xi, uint64_t Y,
+        uint64_t eta, uint64_t M,
+        uint64_t *T_lo, uint32_t *T_hi)
+{
+    // branchless add of Xi*Y: Xi is 0 or 1, so Xi*Y is 0 or Y, no branch needed.
+    // on ARM the compiler emits UMLAL (multiply-accumulate into register pair),
+    // which handles the carry into T_hi in one instruction.
+    uint64_t add_y = Xi * Y;
+    uint64_t old = *T_lo;
+    *T_lo += add_y;
+    if (*T_lo < old)
+        (*T_hi)++;
+ 
+    // same pattern for eta*M
+    uint64_t add_m = eta * M;
+    old = *T_lo;
+    *T_lo += add_m;
+    if (*T_lo < old)
+        (*T_hi)++;
+ 
+    // shift the 128-bit T_hi:T_lo pair right by 1
+    *T_lo = (*T_lo >> 1) | ((uint64_t)(*T_hi & 1U) << 63);
+    *T_hi >>= 1;
+ 
+    // conditional subtract to keep T in [0, M)
+    if (*T_hi != 0 || *T_lo >= M)
+    {
+        *T_lo -= M;
+        *T_hi = 0;
+    }
+}
+
 /* Montgomery Multiplication: returns (X * Y * R^-1) mod M
  * where R = 2^m.  m is number of bits in modulus M.
  * This function assumes M is odd and > 0.
@@ -11,49 +47,46 @@ uint64_t mmm_opt(uint64_t X, uint64_t Y, uint64_t M, int m)
     uint32_t T_hi = 0;
     uint64_t T_lo = 0;
     const uint64_t Y0 = Y & 1ULL;
-
-    // strength reduction optimization: (X >> i) & 1 is a variable distance 64-bit shift, that ARM splices from two registers
-    // shifting a copy right by 1 each pass is constant shift instead
+ 
+    // strength reduction: shifting a copy right by 1 each pass is a constant-distance
+    // shift (one ARM instruction) vs the variable-distance (X >> i) & 1 in the baseline
+    // which requires splicing across two registers on a 64-bit pair
     uint64_t Xs = X;
-
-    // optimization: count down to compare against zero rather than m
-    for (int i = m; i > 0; i--)
+ 
+    int i = 0;
+ 
+    // 4x unrolled body, processes 4 bits of Xs per C iteration.
+    // reduces loop overhead (decrement, compare-against-zero, branch) by 4x.
+    // eta must be recomputed after each step because each call modifies T_lo,
+    // changing its LSB which feeds into the next eta.
+    for (; i <= m - 4; i += 4)
     {
-        const uint64_t Xi = Xs & 1ULL;
-        const uint64_t T0 = T_lo & 1ULL;
-        const uint64_t eta = T0 ^ (Xi & Y0);
-        Xs >>= 1;
-
-        if (Xi)
-        {
-            uint64_t old_lo = T_lo;
-            T_lo += Y;
-            if (T_lo < old_lo)
-            {
-                T_hi += 1;
-            }
-        }
-
-        if (eta)
-        {
-            uint64_t old_lo = T_lo;
-            T_lo += M;
-            if (T_lo < old_lo)
-            {
-                T_hi += 1;
-            }
-        }
-
-        T_lo = (T_lo >> 1) | ((uint64_t)(T_hi & 1U) << 63);
-        T_hi >>= 1;
-
-        if (T_hi != 0 || T_lo >= M)
-        {
-            T_lo -= M;
-            T_hi = 0;
-        }
+        uint64_t Xi, eta;
+ 
+        Xi = Xs & 1ULL; Xs >>= 1;
+        eta = (T_lo & 1ULL) ^ (Xi & Y0);
+        mmm_step(Xi, Y, eta, M, &T_lo, &T_hi);
+ 
+        Xi = Xs & 1ULL; Xs >>= 1;
+        eta = (T_lo & 1ULL) ^ (Xi & Y0);
+        mmm_step(Xi, Y, eta, M, &T_lo, &T_hi);
+ 
+        Xi = Xs & 1ULL; Xs >>= 1;
+        eta = (T_lo & 1ULL) ^ (Xi & Y0);
+        mmm_step(Xi, Y, eta, M, &T_lo, &T_hi);
+ 
+        Xi = Xs & 1ULL; Xs >>= 1;
+        eta = (T_lo & 1ULL) ^ (Xi & Y0);
+        mmm_step(Xi, Y, eta, M, &T_lo, &T_hi);
     }
-
+ 
+    for (; i < m; i++)
+    {
+        uint64_t Xi = Xs & 1ULL; Xs >>= 1;
+        uint64_t eta = (T_lo & 1ULL) ^ (Xi & Y0);
+        mmm_step(Xi, Y, eta, M, &T_lo, &T_hi);
+    }
+ 
     return T_lo;
 }
 
