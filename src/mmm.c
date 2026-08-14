@@ -13,22 +13,70 @@ int bit_length(uint64_t M)
     return m;
 }
 
+static uint64_t mul32(uint32_t a, uint32_t b)
+{
+    return (uint64_t)a * (uint64_t)b;
+}
+
+/* 64x64 -> 128-bit multiply via long multiplication on
+ * 32-bit halves, returned as a (hi, lo) pair, the same T_hi:T_lo
+ * representation mmm() already uses below for its own accumulator,
+ * extended here to build a full product instead of a running sum. */
+static void mul64_wide(uint64_t a, uint64_t b, uint64_t *hi, uint64_t *lo)
+{
+    uint32_t a_lo = (uint32_t)a,       a_hi = (uint32_t)(a >> 32);
+    uint32_t b_lo = (uint32_t)b,       b_hi = (uint32_t)(b >> 32);
+
+    uint64_t ll = mul32(a_lo, b_lo);
+    uint64_t hl = mul32(a_hi, b_lo);
+    uint64_t lh = mul32(a_lo, b_hi);
+    uint64_t hh = mul32(a_hi, b_hi);
+
+    /* Sum of the three middle-order 32-bit chunks: high half of ll,
+     * plus the low halves of hl and lh (their high halves carry into
+     * hi below). */
+    uint64_t mid = (ll >> 32) + (uint32_t)hl + (uint32_t)lh;
+
+    *lo = (mid << 32) | (uint32_t)ll;
+    *hi = hh + (hl >> 32) + (lh >> 32) + (mid >> 32);
+}
+
+/* Reduces a 128-bit value (hi:lo) mod M via the same bit-serial
+ * shift/conditional-subtract technique mmm() uses on its T_hi:T_lo
+ * accumulator: go through the 128 bits from most- to least-significant,
+ * shifting the running remainder left and pulling in each bit,
+ * subtracting M whenever the remainder reaches or exceeds it.
+ * Requires M < 2^63 (true for every modulus this project uses) so
+ * rem<<1 never overflows uint64_t. */
+static uint64_t mod128(uint64_t hi, uint64_t lo, uint64_t M)
+{
+    uint64_t rem = 0;
+    for (int i = 127; i >= 0; i--)
+    {
+        uint64_t bit = (i >= 64) ? ((hi >> (i - 64)) & 1ULL)
+                                  : ((lo >> i) & 1ULL);
+        rem = (rem << 1) | bit;
+        if (rem >= M)
+            rem -= M;
+    }
+    return rem;
+}
+
 uint64_t compute_R2(uint64_t M, int m)
 {
     // R = 2^m mod M
-    typedef unsigned __int128 uint128_t;
-
     uint64_t R = 1 % M;
     for (int i = 0; i < m; i++)
     {
         R = (R * 2) % M;
     }
 
-    // R^2 mod M — must be done in 128-bit arithmetic: R can be up to
-    // ~2^(m-1), so for wide moduli (e.g. the 63-bit default key) a
-    // plain 64-bit R*R silently overflows and wraps before the %M is
-    // ever applied, corrupting R2 and every MMM conversion after it.
-    return (uint64_t)(((uint128_t)R * (uint128_t)R) % (uint128_t)M);
+    // R^2 mod M: build the full 128-bit product as a (hi, lo) pair,
+    // then reduce it mod M, no native 128-bit type needed anywhere,
+    // works identically on any target, VM or not.
+    uint64_t hi, lo;
+    mul64_wide(R, R, &hi, &lo);
+    return mod128(hi, lo, M);
 }
 
 /* Montgomery Multiplication: returns (X * Y * R^-1) mod M
