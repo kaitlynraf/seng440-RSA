@@ -192,9 +192,11 @@ int main(void) {
 
     uint64_t C_tbl = table_modexp(T, E, PQ);
     uint64_t C_mmm = rsa_encrypt(&key, T);
+    uint64_t C_mmm_opt = rsa_encrypt_opt(&key, T);
 
     uint64_t T_tbl = table_modexp(C_tbl, D, PQ);
     uint64_t T_mmm = rsa_decrypt(&key, C_mmm);
+    uint64_t T_mmm_opt = rsa_decrypt_opt(&key, C_mmm_opt);
 
     printf("  %-14s  %-22s  %-22s\n", "Method", "Ciphertext C", "Decrypted T'");
     printf("  %s\n", "--------------------------------------------------------------");
@@ -202,16 +204,20 @@ int main(void) {
            C_tbl, T_tbl, T_tbl == T ? "OK" : "MISMATCH");
     printf("  %-14s  %-22" PRIu64 "  %-22" PRIu64 "  %s\n", "MMM",
            C_mmm, T_mmm, T_mmm == T ? "OK" : "MISMATCH");
+    printf("  %-14s  %-22" PRIu64 "  %-22" PRIu64 "  %s\n", "MMM",
+           C_mmm_opt, T_mmm_opt, T_mmm_opt == T ? "OK" : "MISMATCH");
 
-    int agree = (C_tbl == C_mmm);
+    int agree = (C_tbl == C_mmm && C_mmm == C_mmm_opt);
     printf("\n  Both methods agree: %s\n", agree ? "YES" : "MISMATCH");
 
     if (is_text) {
-        char tbl_out[MAX_TEXT_BYTES + 1], mmm_out[MAX_TEXT_BYTES + 1];
+        char tbl_out[MAX_TEXT_BYTES + 1], mmm_out[MAX_TEXT_BYTES + 1], mmm_opt_out[MAX_TEXT_BYTES + 1];
         unpack_text(T_tbl, tbl_out, text_len);
         unpack_text(T_mmm, mmm_out, text_len);
+        unpack_text(T_mmm_opt, mmm_opt_out, text_len);
         printf("\n  Decrypted text (table): \"%s\"\n", tbl_out);
         printf("  Decrypted text (MMM):   \"%s\"\n", mmm_out);
+        printf("  Decrypted text (MMM Optimized):   \"%s\"\n", mmm_opt_out);
     }
 
     return 0;

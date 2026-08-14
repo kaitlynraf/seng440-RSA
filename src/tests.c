@@ -180,6 +180,43 @@ int run_tests(void)
             CHECK_TRUE(labels[i], Tr == Tc);
         }
     }
+     /* ----------------------------------------------------------
+     * Group 4 — Optimized MMM
+     *
+     * mmm_opt and mme_opt must produce bit-identical results to
+     * mmm and mme.  Any difference here means the CLZ shortcut,
+     * loop unrolling, or branchless add changes broke correctness.
+     *
+     * T25-T27 repeat the Group 1 raw MMM checks using mmm_opt.
+     * T28-T29 check mme_opt against the class example.
+     * T30-T31 check mme_opt against the 64-bit key known values.
+     * T32 directly compares mme_opt vs mme on the same input.
+     * ---------------------------------------------------------- */
+    printf("\n  [Group 4] Optimized MMM — mmm_opt / mme_opt\n");
+    {
+        uint64_t M = 23;
+        int      m = bit_length(M);
+        CHECK("T25 mmm_opt(17,22,23) = 16",   mmm_opt(17,22,M,m), 16ULL);
+        CHECK("T26 mmm_opt(R,R,M)    = R",    mmm_opt(9,9,M,m),    9ULL);
+        CHECK("T27 mmm_opt(1,1,M)    = R^-1", mmm_opt(1,1,M,m),   18ULL);
+    }
+    {
+        uint64_t E  = CLASS_E,  D  = CLASS_D,  PQ = CLASS_PQ;
+        int      m  = bit_length(PQ);
+        uint64_t R2 = compute_R2(PQ, m);
+        CHECK("T28 [opt] encrypt(123) = 855", mme_opt(123,E,PQ,m,R2), 855ULL);
+        CHECK("T29 [opt] decrypt(855) = 123", mme_opt(855,D,PQ,m,R2), 123ULL);
+    }
+    {
+        uint64_t E  = DEFAULT_E, D  = DEFAULT_D, PQ = DEFAULT_PQ;
+        int      m  = bit_length(PQ);
+        uint64_t R2 = compute_R2(PQ, m);
+        uint64_t T_k = DEFAULT_TEST_T, C_k = DEFAULT_TEST_C;
+        CHECK("T30 [opt] encrypt(123456789) = known C", mme_opt(T_k,E,PQ,m,R2), C_k);
+        CHECK("T31 [opt] decrypt round-trip",           mme_opt(C_k,D,PQ,m,R2), T_k);
+        CHECK_TRUE("T32 mme_opt == mme on encrypt",
+                   mme_opt(T_k,E,PQ,m,R2) == mme(T_k,E,PQ,m,R2));
+    }
 
     printf("\n-------------------------------------------------------------\n");
     if (fail == 0)
