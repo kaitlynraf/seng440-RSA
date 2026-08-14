@@ -18,3 +18,13 @@ uint64_t rsa_decrypt(const rsa_key_t *key, uint64_t C)
 {
     return mme(C, key->D, key->PQ, key->m, key->R2);
 }
+
+uint64_t rsa_encrypt_opt(const rsa_key_t *key, uint64_t P)
+{
+    return mme_opt(P, key->E, key->PQ, key->m, key->R2);
+}
+
+uint64_t rsa_decrypt_opt(const rsa_key_t *key, uint64_t C)
+{
+    return mme_opt(C, key->D, key->PQ, key->m, key->R2);
+}

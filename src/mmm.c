@@ -24,8 +24,8 @@ static uint64_t mul32(uint32_t a, uint32_t b)
  * extended here to build a full product instead of a running sum. */
 static void mul64_wide(uint64_t a, uint64_t b, uint64_t *hi, uint64_t *lo)
 {
-    uint32_t a_lo = (uint32_t)a,       a_hi = (uint32_t)(a >> 32);
-    uint32_t b_lo = (uint32_t)b,       b_hi = (uint32_t)(b >> 32);
+    uint32_t a_lo = (uint32_t)a, a_hi = (uint32_t)(a >> 32);
+    uint32_t b_lo = (uint32_t)b, b_hi = (uint32_t)(b >> 32);
 
     uint64_t ll = mul32(a_lo, b_lo);
     uint64_t hl = mul32(a_hi, b_lo);
@@ -54,7 +54,7 @@ static uint64_t mod128(uint64_t hi, uint64_t lo, uint64_t M)
     for (int i = 127; i >= 0; i--)
     {
         uint64_t bit = (i >= 64) ? ((hi >> (i - 64)) & 1ULL)
-                                  : ((lo >> i) & 1ULL);
+                                 : ((lo >> i) & 1ULL);
         rem = (rem << 1) | bit;
         if (rem >= M)
             rem -= M;
@@ -158,19 +158,18 @@ uint64_t mme(uint64_t X, uint64_t E, uint64_t M, int m, uint64_t R2)
     // bring base into Montgomery domain
     uint64_t X_m = mmm(X % M, R2, M, m);
 
-    // initialize Z as 1 in Montgomery domain
-    uint64_t Z_m = mmm(1, R2, M, m);
+    const int e_bits = bit_length(E);
 
-    // process bits of E from least -> most significant bit
-    uint64_t e = E;
-    while (e != 0)
+    // process bits of E from most -> least significant bit
+    uint64_t Z_m = X_m;
+    for (int i = e_bits - 2; i >= 0; i--)
     {
-        if (e & 1ULL)
+        Z_m = mmm(Z_m, Z_m, M, m); // square
+
+        if ((E >> i) & 1ULL)
         {
             Z_m = mmm(Z_m, X_m, M, m); // multiply
         }
-        X_m = mmm(X_m, X_m, M, m); // square
-        e >>= 1ULL;
     }
 
     // convert out of Montgomery

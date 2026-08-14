@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "mmm.h"
+#include "mmm_opt.h"
 
 typedef struct
 {
@@ -21,5 +22,9 @@ uint64_t rsa_encrypt(const rsa_key_t *key, uint64_t P);
 
 // eecrypt ciphertext C: P = C^D mod PQ, with MME
 uint64_t rsa_decrypt(const rsa_key_t *key, uint64_t C);
+
+// same operations routed through the optimized Montgomery routines
+uint64_t rsa_encrypt_opt(const rsa_key_t *key, uint64_t P);
+uint64_t rsa_decrypt_opt(const rsa_key_t *key, uint64_t C);
 
 #endif /* RSA_H */
